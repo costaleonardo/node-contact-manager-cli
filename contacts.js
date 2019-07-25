@@ -29,6 +29,39 @@ const addContact = (name, email) => {
 /**
  * @TODO
  * 
+ * DELETE Delete contact.
+ */
+const removeContact = name => {
+  const contacts = loadContacts()
+  const contactsToKeep = contacts.filter(contact => contact.name !== name)
+
+  if (contacts.length > contactsToKeep.length) {  
+    console.log(chalk.green.inverse('Contact removed.'))
+    
+    saveContacts(contactsToKeep)
+  } else {
+    console.log(chalk.red.inverse('Contact not found.'))
+  }
+}
+
+/**
+ * @TODO
+ * 
+ * GET Fetch all contacts.
+ */
+const listContacts = () => {
+  const contacts = loadContacts()
+
+  console.log(chalk.inverse('Contacts'))
+
+  contacts.forEach(contact => {
+    console.log(contact.name)
+  })
+}
+
+/**
+ * @TODO
+ * 
  * POST Save current contact.
  */
 const saveContacts = contacts => {
@@ -53,5 +86,7 @@ const loadContacts = () => {
 }
 
 module.exports = {
-  addContact
+  addContact,
+  removeContact,
+  listContacts
 }

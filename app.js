@@ -27,5 +27,25 @@ yargs.command({
   }
 })
 
+/**
+ * @TODO
+ * 
+ * Command: Remove
+ */
+yargs.command({
+  command: 'remove',
+  describe: 'Remove contact.',
+  builder: {
+    name: {
+      describe: 'Contact name.',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler(argv) {
+    contacts.removeContact(argv.name)
+  }
+})
+
 console.log(yargs.argv)
 
